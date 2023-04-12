@@ -58,3 +58,26 @@ section img:hover {
   border: 5px solid rosybrown;
   cursor: pointer;
 }
+
+section.no-voting img:hover {
+  border: 5px solid transparent;
+  cursor: none;
+}
+
+ul {
+  margin: 1rem;
+}
+
+li {
+  margin: 0.5rem;
+}
+
+section + div {
+  background-color: darkgrey;
+  color: lightgrey;
+  padding: 0.5rem 1rem;
+  width: max-content;
+  height: max-content;
+  font-size: 0.8rem;
+  margin: 1rem;
+}

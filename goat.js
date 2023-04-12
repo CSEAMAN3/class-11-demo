@@ -37,8 +37,6 @@ function renderGoats() {
   image2.alt = state.allGoatsArray[goat2].name;
   state.allGoatsArray[goat1].views++;
   state.allGoatsArray[goat2].views++;
-  console.log(state.allGoatsArray[goat1]);
-  console.log(state.allGoatsArray[goat2]);
 }
 
 function handleGoatClick(event) {
@@ -47,11 +45,28 @@ function handleGoatClick(event) {
   }
   clicks++;
   let clickGoat = event.target.alt;
-  for (let i = 0; state.allGoatsArray.length; i++) {
+  for (let i = 0; i < state.allGoatsArray.length; i++) {
     if (clickGoat === state.allGoatsArray[i].name) {
       state.allGoatsArray[i].clicks++;
       break;
     }
+  }
+  if (clicks === maxClicksAllowed) {
+    goatContainer.removeEventListener("click", handleGoatClick);
+    resultButton.addEventListener("click", renderResults);
+    // resultButton.className = "clicks-allowed";
+    goatContainer.className = "no-voting";
+  } else {
+    renderGoats();
+  }
+}
+
+function renderResults() {
+  let ul = document.querySelector("ul");
+  for (let i = 0; i < state.allGoatsArray.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = `${state.allGoatsArray[i].name} had ${state.allGoatsArray[i].views} views and was clicked ${state.allGoatsArray[i].clicks} times.`;
+    ul.appendChild(li);
   }
 }
 
