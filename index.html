@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio / visual / grid demo</title>
+  </head>
+  <body>
+    <header>
+      <h1>Audio Visual elements</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Audio</h2>
+        <audio id="levees" src="assets/levees.m4a" controls autoplay muted loop></audio>
+        <ul>
+          <li>Autoplay: Boolean, use sparingly</li>
+          <li>Controls: provide playback cotrols for the user</li>
+          <li>loop: boolean, will play audio over and over</li>
+          <li>muted: boolean, use to mute the audio on the page</li>
+          <li>src: link to audio src file</li>
+          <li>volume: range 0.0 (silent) to 1.0 (loudest)</li>
+        </ul>
+        <button id="randomizer">Click this button to randomly adjust the volume.</button>
+      </section>
+      <section>
+        <h2>Video</h2>
+        <video
+          id="demi"
+          src="assets/demi.mov"
+          width="50%"
+          height="220px"
+          controls
+          muted
+          poster="assets/bag-copy.jpg"
+        ></video>
+        <ul>
+          <li>autoplay: boolean, use sparingly</li>
+          <li>controls: provide playback controls</li>
+          <li>height: must be an absolute value, no percentage</li>
+          <li>muted: boolean, use this to mute the page on load</li>
+          <li>posted: use an alternative image in place of the first frame before playback has initialised</li>
+          <li>src: select the file you want</li>
+          <li>volume: range 0.0 to 1</li>
+          <li>width: may be an absolute value or a percentage</li>
+        </ul>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
