@@ -23,11 +23,14 @@ function getRandomNumber() {
   return Math.floor(Math.random() * state.allGoatsArray.length);
 }
 
+let usedGoats = [];
+
 function renderGoats() {
   let goat1 = getRandomNumber();
   let goat2 = getRandomNumber();
 
-  while (goat1 === goat2) {
+  while (goat1 === goat2 || usedGoats.includes(goat1) || usedGoats.includes(goat2)) {
+    goat1 = getRandomNumber();
     goat2 = getRandomNumber();
   }
 
@@ -37,6 +40,10 @@ function renderGoats() {
   image2.alt = state.allGoatsArray[goat2].name;
   state.allGoatsArray[goat1].views++;
   state.allGoatsArray[goat2].views++;
+
+  usedGoats = [];
+  console.log(usedGoats);
+  usedGoats.push(goat1, goat2);
 }
 
 function handleGoatClick(event) {
@@ -86,7 +93,7 @@ function renderChart() {
     labels: labelArray,
     datasets: [
       {
-        label: "Jezza",
+        label: "Views",
         data: viewsArray,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -137,6 +144,7 @@ function renderChart() {
   const config = {
     type: "bar",
     data: data,
+    responsive: true,
     options: {
       scales: {
         y: {
